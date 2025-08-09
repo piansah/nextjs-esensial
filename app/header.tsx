@@ -1,12 +1,14 @@
 import { getSetting } from "@/app/queries/getSetting";
 import { Nav } from "./nav";
+import { Suspense } from "react";
 
 export async function Header() {
-  const setting = await getSetting();
+  const settingPromise = getSetting(); // ✅ langsung Promise, tanpa await
   return (
     <header className="border-b border-white py-2 mb-2">
-      <div className="text-2xl">{setting.siteName}</div>
-      <Nav />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Nav settingPromise={settingPromise} />
+      </Suspense>
     </header>
   );
 }
