@@ -24,5 +24,8 @@
       "title": "Fourth Post",
       "content": "This is the content of the fourth post."
     }
-  ]
+  ],
+  "settings": {
+    "siteName": "Pian NextJS"
+  }
 }

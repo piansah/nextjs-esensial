@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import { Header } from "@/app/header";
+import {Footer} from "@/app/footer";
 
 const FontSans = Source_Sans_3({
   variable: "--font-sans",
@@ -26,16 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${FontSans.variable} ${FontMono.variable}`}>
-        <header className="border-b border-white">
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="/about/team">Team</Link>
-            <Link href="/admin">Admin</Link>
-            <Link href="/posts">Posts</Link>
-          </nav>
-        </header>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
