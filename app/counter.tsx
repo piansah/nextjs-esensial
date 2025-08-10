@@ -6,10 +6,10 @@ export function Counter() {
 
   return (
     <div>
-      <p>Counter: {count}</p>
+      <p>Counter</p>
       <button onClick={() => setCount(count + 1)} 
       className="px-4 py-2 bg-amber-600 text-white rounded-b-md">
-        Increment</button>
+        Increment: {count}</button>
     </div>
   );
 }

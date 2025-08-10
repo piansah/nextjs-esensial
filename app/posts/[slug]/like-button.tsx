@@ -1,20 +1,26 @@
 "use client";
 import { createLike } from "@/app/actions";
+import { useState, useTransition } from "react";
 
 export function LikeButton() {
+  const [Pending, startTransition] = useTransition();
+  const [count, setCount] = useState(0);
+
   async function handleLike() {
-    const prevData = { error: "" }; // or use the actual previous state if available
-    const formData = new FormData();
-    formData.append("postId", "your-post-id"); // Replace with the actual post ID
-    await createLike(prevData, formData);
+    startTransition(() => {
+      createLike();
+    });
   }
 
   return (
     <button
       className="bg-white text-black py-1 px-2 rounded"
-      onClick={handleLike}
+      onClick={async () => {
+        await handleLike();
+        setCount(count + 1);
+      }}
     >
-      Like
+      {Pending ? "Like brooow" : "Like"} {count}
     </button>
   );
 }
