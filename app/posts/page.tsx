@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Post } from "@/app/types/posts";
-import { createComment } from "@/app/actions";
+import { CommentForm } from "@/app/posts/[slug]/comment-form";
+import { LikeButton } from "@/app/posts/[slug]/like-button";
 
 async function getPosts(): Promise<Post[]> {
   const res = await fetch("http://localhost:3001/posts");
@@ -20,18 +21,11 @@ export default async function PostsPage() {
           </h2>
         </article>
       ))}
+      <hr className="my-4"/>
+      <LikeButton />
       <section className="mt-4">
         <h2 className="text-lg font-bold">Comments</h2>
-        <form action={createComment}>
-          <textarea name="comment" rows={4} placeholder="Masukan Komentar" />
-          <br />
-          <button
-            type="submit"
-            className="mt-2 bg-blue-500 text-white py-1 px-4 rounded"
-          >
-            Submit
-          </button>
-        </form>
+        <CommentForm />
       </section>
     </div>
   );
