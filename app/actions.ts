@@ -11,11 +11,11 @@ export async function createComment(prevData: State, formData: FormData) {
     return { error: "Comment is required" };
   }
 
-  return { error: "" }; // tidak ada error
+  return { error: "" };
 }
 
 
-export async function createLike(postId: string) {
+export async function createLike() {
   await new Promise((resolve) => setTimeout(() => resolve(true), 1000)); // Simulate network delay
-  console.log("Like post:", postId);
+  console.log("Like post");
 }
