@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Post } from "@/app/types/posts";
-import { CommentForm } from "@/app/posts/[slug]/comment-form";
-import { LikeButton } from "@/app/posts/[slug]/like-button";
+
+export const metadata = {
+  title: "Posts"
+}
 
 async function getPosts(): Promise<Post[]> {
   const res = await fetch("http://localhost:3001/posts");
@@ -13,7 +15,7 @@ export default async function PostsPage() {
 
   return (
     <div>
-      <h1>Posts Page</h1>
+      <h1 className="text-2xl font-bold">Posts Page</h1>
       {posts.map((post) => (
         <article key={post.id}>
           <h2>
@@ -21,12 +23,6 @@ export default async function PostsPage() {
           </h2>
         </article>
       ))}
-      <hr className="my-4"/>
-      <LikeButton />
-      <section className="mt-4">
-        <h2 className="text-lg font-bold">Comments</h2>
-        <CommentForm />
-      </section>
     </div>
   );
 }

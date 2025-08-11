@@ -8,7 +8,7 @@ export function LikeButton() {
 
   async function handleLike() {
     startTransition(() => {
-      createLike("");
+      createLike();
     });
   }
 
