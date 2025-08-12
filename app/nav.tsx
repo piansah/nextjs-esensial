@@ -9,6 +9,7 @@ export function Nav() {
       <Link href="/about/team">Team</Link>
       <Link href="/admin">Admin</Link>
       <Link href="/posts">Posts</Link>
+      <Link href="/api/user">User API</Link>
     </nav>
   );
 }
