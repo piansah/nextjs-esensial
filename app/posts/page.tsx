@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Post } from "@/app/types/posts";
 
 export const metadata = {
-  title: "Posts"
-}
+  title: "Posts",
+};
 
 async function getPosts(): Promise<Post[]> {
-  const res = await fetch("http://localhost:3001/posts");
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  const res = await fetch("http://localhost:3001/posts", { cache: "no-store" });
   return res.json();
 }
 
