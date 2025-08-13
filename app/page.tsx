@@ -3,6 +3,7 @@ import Image from "next/image";
 import gambarKucing from "@/public/cat.jpeg";
 
 export default function Home() {
+  // throw new Error("Error occurred");
   return (
     <div>
       <h1>Home Page</h1>
