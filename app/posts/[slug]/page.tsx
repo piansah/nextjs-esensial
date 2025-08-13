@@ -3,6 +3,7 @@ import { CommentForm } from "@/app/posts/[slug]/comment-form";
 import { LikeButton } from "@/app/posts/[slug]/like-button";
 import { CommentsSection } from "./comments";
 import { Suspense } from "react";
+import NotFound from "@/app/not-found";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
@@ -24,6 +25,10 @@ export default async function PostPage({
 }) {
   const { slug } = params;
   const post = await getPost(slug);
+
+  if (!post) {
+    return <NotFound />;
+  }
 
   return (
     <div>
